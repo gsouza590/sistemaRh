@@ -1,0 +1,5 @@
+spring:
+ application:
+  name: payment_api
+server:
+ port: 8100 
