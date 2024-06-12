@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import br.com.gabriel.user_api.model.User;
 import br.com.gabriel.user_api.repositories.UserRepository;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class UserApiApplication8000 implements CommandLineRunner {
 
 	@Autowired
