@@ -1,8 +1,10 @@
 spring:
  application:
   name: payment_api
+ main:
+   allow-bean-definition-overriding: true
 server:
- port: 8100 
+ port: ${PORT:8100} 
  
 eureka:
  client: 
