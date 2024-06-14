@@ -1,6 +1,6 @@
 spring:
  application:
-  name: payment_api
+  name: payment-api
  main:
    allow-bean-definition-overriding: true
 server:
@@ -9,4 +9,5 @@ server:
 eureka:
  client: 
   service-url:
-   defaultZone: ${EUREKA_URL:http//localhost:8761/eureka}
+   default-zone: ${EUREKA_URL:http://localhost:8761/eureka}
+   #defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}

@@ -6,9 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
+
 import br.com.gabriel.payment_api.FeignClients.UserFeign;
 import br.com.gabriel.payment_api.model.Payroll;
-import br.com.gabriel.payment_api.model.User;
 import br.com.gabriel.payment_api.services.exceptions.ObjectNotFoundExceptions;
 import feign.FeignException;
 
@@ -19,20 +19,20 @@ public class PayrollServices {
 	private final UserFeign feign;
 
 	public PayrollServices(Environment env, UserFeign feign) {
+		super();
 		this.env = env;
 		this.feign = feign;
 	}
 
-	public Payroll getPayment(Long workerId, Payroll payroll) {
-		log.info("Payroll Service :: Get Request on " + env.getProperty("local.server.port") + "port");
-		try {
-			User user = feign.findById(workerId).getBody();
 
+
+	public Payroll getPayment(Long workerId, Payroll payroll) {
+		log.info("PAYROLL_SERVICE ::: Get request on " + env.getProperty("local.server.port") + " port");
+		try {
+			var user = feign.findById(workerId).getBody();
 			if (Objects.nonNull(user)) {
 				return new Payroll(user.getName(), payroll.getDescription(), user.getHourlyPrice(),
-						payroll.getWorkedHours(), payroll.getWorkedHours() * user.getHourlyPrice()
-
-				);
+						payroll.getWorkedHours(), payroll.getWorkedHours() * user.getHourlyPrice());
 			}
 		} catch (FeignException.NotFound ex) {
 			throw new ObjectNotFoundExceptions("Object not found");
@@ -40,5 +40,6 @@ public class PayrollServices {
 			throw new IllegalArgumentException("Illegal argument exception");
 		}
 		return null;
+
 	}
 }

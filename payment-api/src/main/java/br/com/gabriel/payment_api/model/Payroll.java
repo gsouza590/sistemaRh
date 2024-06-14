@@ -3,11 +3,15 @@ package br.com.gabriel.payment_api.model;
 public class Payroll {
 
 	private String workerName;
-	private String description;
-	private Double hourlyPrice;
-	private Double workedHours;
-	private Double totalPayment;
+    private String description;
+    private Double hourlyPrice;
+    private Double workedHours;
+    private Double totalPayment;
 	
+	public Payroll() {
+		super();
+	}
+
 	public Payroll(String workerName, String description, Double hourlyPrice, Double workedHours, Double totalPayment) {
 		super();
 		this.workerName = workerName;
