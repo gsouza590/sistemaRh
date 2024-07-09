@@ -22,7 +22,7 @@ Este projeto demonstra uma arquitetura de microsserviços utilizando Spring Boot
 ### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/gsouza590/sistemaRh.git
 cd seu-repositorio 
 ```
 
@@ -54,3 +54,36 @@ Payment API:
 - **Base URL**: http://localhost:8100/api/payments
     - Exemplos:
     - GET /{id}: Calcula o pagamento para um usuário específico.
+
+## Endpoints
+Construir e Executar os Serviços com Docker
+Navegue até o diretório de cada serviço e construa as imagens Docker.
+
+### Eureka Server
+```bash
+cd eureka-server
+mvn clean package
+docker build -t gsouza590/eureka-server:1.0.0 .
+```
+### API Gateway
+```bash
+cd ../api-gateway
+mvn clean package
+docker build -t gsouza590/api-gateway:1.0.0 .
+```
+### User API
+```bash
+cd ../user-api
+mvn clean package
+docker build -t gsouza590/user-api:1.0.0 .
+```
+### Payment Api
+```bash
+cd ../payment-api
+mvn clean package
+docker build -t gsouza590/payment-api:1.0.0 .
+```
+### Executar com Docker Compose
+```bash
+docker-compose up
+```
